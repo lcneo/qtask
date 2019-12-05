@@ -1,0 +1,60 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+</head>
+<body>
+<div>
+    <form action="/list" method="post">
+        <table>
+            <tr>
+                <th>任务ID</th>
+                <th><input type="text" name="jobId"></th>
+            </tr>
+            <tr>
+            <th>任务名称：</th>
+            <th><input type="text" name="jobName"></th>
+            </tr>
+            <tr>
+                <th>任务分组：</th>
+                <th><input type="text" name="jobGroup"/></th>
+            </tr>
+
+            <tr>
+                <th>调用目标字符串：</th>
+                <th><input type="text" name="invokeTarget"/></th>
+            </tr>
+            <tr>
+                <th>cron表达式：</th>
+                <th><input type="text" name="cronExpression"/></th>
+            </tr>
+            <tr>
+                <th>执行策略：</th>
+                <th><input type="radio" name="misfirePolicy" checked="checked" value="1">立即执行</th>
+                <th><input type="radio" name="misfirePolicy" value="2">执行一次</th>
+                <th><input type="radio" name="misfirePolicy" value="3">放弃执行</th>
+            </tr>
+            <tr>
+                <th>并发执行：</th>
+                <th><input type="radio" name="concurrent" value="1">允许</th>
+                <th><input type="radio" name="concurrent" checked="checked" value="2">禁止</th>
+            </tr>
+            <tr>
+                <th>状态：</th>
+                <th><input type="radio" name="status" checked="checked" value="1">正常</th>
+                <th><input type="radio" name="status" value="2">暂停</th>
+            </tr>
+            <tr>
+                <th>备注：</th>
+                <th><textarea rows="5" cols="30" name="remake"></textarea></th>
+            </tr>
+
+            <tr>
+                <th><button type="submit"> 提交</button></th>
+            </tr>
+        </table>
+
+
+    </form>
+</div>
+</body>
+</html>
