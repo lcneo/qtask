@@ -57,15 +57,17 @@ create table quartz_job(
    job_id integer not null ,
    job_name varchar2(64),
    job_group varchar2(64) default 'DEFAULT',
-   invoke_target varchar(500) not null ,
-   cron_expression varchar(255) not null ,
-   misfire_policy varchar(20) not null ,
+   invoke_target varchar2(500) not null ,
+   cron_expression varchar2(255) not null ,
+   misfire_policy varchar2(20) not null ,
    concurrent char(1) not null ,
    status char(1) not null ,
-   remake varchar(500) default null,
+   remark varchar2(500) default null,
    primary key (job_name, job_group)
    );
 
+drop sequence quartz_job_id_seq;
+commit ;
 create sequence quartz_job_id_seq minvalue 1 maxvalue 99999999
        increment by 1
        start with 1;   /*步长为1*/
@@ -73,8 +75,19 @@ create sequence quartz_job_id_seq minvalue 1 maxvalue 99999999
 
 insert into quartz_job values (quartz_job_id_seq.nextval, 'job1', 'jobs', 'ryTask.ryNoParams', '0/10 * * * * ?', '3', '1', '1','插入的第一个任务');
 commit;
+
+insert into quartz_job values (quartz_job_id_seq.nextval, 'job2', 'jobs2', 'ryTask.ryNoParams', '0/10 * * * * ?', '3', '1', '1','插入的第一个任务');
+commit;
+
+insert into quartz_job values (quartz_job_id_seq.nextval, 'job1', 'jobs2', 'ryTask.ryNoParams', '0/10 * * * * ?', '3', '1', '1','插入的第一个任务');
+commit;
+
+
+commit ;
 select * from quartz_job;
 
 select count(*) from QUARTZ_JOB;
 
 select * from QUARTZ_JOB where job_name like '%' || 'j'|| '%';
+
+select job_id from QUARTZ_JOB where job_name='df' AND job_group='dfg';

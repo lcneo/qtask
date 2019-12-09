@@ -219,12 +219,12 @@ public class QuartzServiceOld {
         return jobList;
     }
 
+
     /**
      * 获取所有正在运行的job
      *
      * @return
      */
-
     public List<Map<String, Object>> queryRunJob() {
         List<Map<String, Object>> jobList = null;
         try {

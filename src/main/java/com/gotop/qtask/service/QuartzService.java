@@ -59,7 +59,7 @@ public interface QuartzService {
      * @param ids 需要删除的数据ID
      * @return 结果
      */
-    public void deletejobByIds(String ids) throws SchedulerException;
+    public void deleteJobByIds(String ids) throws SchedulerException;
 
     /**
      * 任务调度状态修改
@@ -99,8 +99,5 @@ public interface QuartzService {
      * @param cronExpression 表达式
      * @return 结果
      */
-    public boolean checkCronExpressionIsVakid(String cronExpression);
-
-    public boolean test();
-
+    public boolean checkCronExpressionIsValid(String cronExpression);
 }

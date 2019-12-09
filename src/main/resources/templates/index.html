@@ -3,8 +3,8 @@
     <meta charset="UTF-8">
 </head>
 <body>
-<div>
-    <form action="/list" method="post">
+<div name="forms" id="forms">
+    <form action="/insert" method="post" id="form1" name="form1">
         <table>
             <tr>
                 <th>任务ID</th>
@@ -45,16 +45,22 @@
             </tr>
             <tr>
                 <th>备注：</th>
-                <th><textarea rows="5" cols="30" name="remake"></textarea></th>
+                <th><textarea rows="5" cols="30" name="remark"></textarea></th>
             </tr>
 
             <tr>
-                <th><button type="submit"> 提交</button></th>
+                <th><input type="text" id="url"/></th>
+                <th><button onclick="cliclButton()">确认</button></th>
             </tr>
         </table>
-
-
     </form>
 </div>
+<script>
+var cliclButton = function(){
+    document.form1.action = document.getElementById("url").value;
+    console.log(document.getElementById("url").value);
+    document.form1.submit();
+}
+</script>
 </body>
 </html>

@@ -1,5 +1,7 @@
 package com.gotop.qtask.domain;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
@@ -36,7 +38,8 @@ public class QuartzJob implements Serializable {
     private String status;
 
     /** 备注 */
-    private String remake;
+    private String remark;
+
 
     public Long getJobId() {
         return jobId;
@@ -94,12 +97,12 @@ public class QuartzJob implements Serializable {
         this.status = status;
     }
 
-    public String getRemake() {
-        return remake;
+    public String getRemark() {
+        return remark;
     }
 
-    public void setRemake(String remake) {
-        this.remake = remake;
+    public void setRemark(String remark) {
+        this.remark = remark;
     }
 
     public String getJobName() {
@@ -109,6 +112,10 @@ public class QuartzJob implements Serializable {
     public void setJobName(String jobName) {
         this.jobName = jobName;
     }
+
+//    public boolean isValid(){
+//        return jobName !=null && jobName != "" && jobGroup != null && jobGroup != "" && invokeTarget != null && invokeTarget != "" && cronExpression != null && cronExpression != "" && misfirePolicy != null && misfirePolicy != "" && concurrent != null && concurrent != "" && status != null && status != "" ? true : false;
+//    }
 
     @Override
     public String toString() {
@@ -121,7 +128,7 @@ public class QuartzJob implements Serializable {
                 ", misfirePolicy='" + misfirePolicy + '\'' +
                 ", concurrent='" + concurrent + '\'' +
                 ", status='" + status + '\'' +
-                ", remake='" + remake + '\'' +
+                ", remark='" + remark + '\'' +
                 '}';
     }
 }

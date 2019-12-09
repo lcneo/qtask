@@ -17,6 +17,14 @@ public interface QuartzJobMapper {
     public List<QuartzJob> selectJobList(QuartzJob job);
 
     /**
+     * 通过调度任务名和调度任务组查询ID
+     * @param job
+     * @return  调度任务ID
+     */
+    @Select("select job_id from quartz_job where job_name=#{jobName} AND job_group =#{jobGroup}")
+    public Long selectJobIdByJob(QuartzJob job);
+
+    /**
      * 查询所有调度信息
      *
      * @return  角色对象信息
@@ -30,6 +38,13 @@ public interface QuartzJobMapper {
      * @return
      */
     public QuartzJob selectJobById(Long jobId);
+
+    /**
+     * 通过调度ID删除任务信息
+     * @param jobId 调度ID
+     * @return
+     */
+    public int deleteJobById(Long jobId);
 
     /**
      * 批量删除调度任务信息

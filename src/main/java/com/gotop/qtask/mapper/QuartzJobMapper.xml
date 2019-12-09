@@ -29,4 +29,43 @@
         <include refid="selectJobVo" />
     </select>
 
+    <select id="selectJobById" parameterType="Long" resultType="QuartzJob">
+        <include refid="selectJobVo"></include>
+        where job_id = #{jobId}
+    </select>
+
+    <delete id="deleteJobById" parameterType="Long">
+        delete job_id = #{jobId}
+    </delete>
+
+    <delete id="deleteJobByIds" parameterType="Long">
+        delete from quartz_job where job_id in
+        <foreach collection="array" item="jobId" open="(" separator="," close=")">
+            #{jobId}
+        </foreach>
+    </delete>
+    
+    <update id="updateJob" parameterType="QuartzJob">
+        update quartz_job
+        <set>
+            job_name = #{jobName},
+            job_group = #{jobGroup},
+            invoke_target = #{invokeTarget},
+            cron_expression = #{cronExpression},
+            misfire_policy = #{misfirePolicy},
+            concurrent = #{concurrent},
+            status = #{status},
+            remark = #{remark}
+        </set>
+        where job_id = #{jobId}
+    </update>
+
+    <insert id="insertJob" parameterType="QuartzJob" >
+        insert into quartz_job(
+        job_id, job_name, job_group, invoke_target, cron_expression, misfire_policy, concurrent, status, remark
+        )values(
+        quartz_job_id_seq.nextval, #{jobName}, #{jobGroup}, #{invokeTarget}, #{cronExpression}, #{misfirePolicy}, #{concurrent}, #{status}, #{remark}
+        )
+    </insert>
+
 </mapper>
